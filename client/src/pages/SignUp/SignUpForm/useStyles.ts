@@ -4,15 +4,18 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme: Theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(5),
   },
-  label: {
-    fontSize: 19,
-    color: 'rgb(0,0,0,0.4)',
-    paddingLeft: '5px',
+  typography: {
+    fontFamily: ' "Roboto", "Arial"',
+    fontSize: '8',
+    color: '#000000',
+    marginBottoms: -5,
+    paddingLeft: '15px',
   },
   inputs: {
-    marginTop: '1rem',
+    marginTop: '0.5rem',
+    marginBottom: '0.5rem',
     height: '2rem',
     padding: '5px',
   },
@@ -27,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 56,
     borderRadius: theme.shape.borderRadius,
     fontSize: 16,
-    backgroundColor: '#3a8dff',
+    backgroundColor: '#f14140',
     fontWeight: 'bold',
   },
 }));

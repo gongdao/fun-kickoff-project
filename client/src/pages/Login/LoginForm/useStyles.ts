@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingLeft: '5px',
   },
   inputs: {
-    marginTop: '.8rem',
+    marginTop: '0.5rem',
+    marginBottom: '0.5rem',
     height: '2rem',
     padding: '5px',
   },
@@ -21,14 +22,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     color: '#3a8dff',
   },
   submit: {
-    margin: theme.spacing(3, 2, 2),
     padding: 10,
-    width: 160,
+    width: 180,
     height: 56,
     borderRadius: theme.shape.borderRadius,
     marginTop: 49,
-    fontSize: 16,
-    backgroundColor: '#3a8dff',
+    fontSize: 14,
+    color: 'red',
+    border: '1px solid red',
     fontWeight: 'bold',
   },
 }));

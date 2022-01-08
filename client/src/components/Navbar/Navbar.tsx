@@ -10,13 +10,19 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  Button,
 } from '@mui/material';
-import { Menu as MenuIcon, AccountCircle } from '@mui/icons-material';
+
 import { Person as ProfileIcon, Logout as LogoutIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import useStyles from './useStyles';
+import Logo from '../../assets/images/logo.png';
+import AvatarDisplay from '../AvatarDisplay/AvatarDisplay';
+import greenDot from '../../assets/avatar/greenDot.png';
 
 const Navbar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { loggedInUser, logout } = useAuth();
+  const classes = useStyles();
 
   const open = Boolean(anchorEl);
 
@@ -34,16 +40,16 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          <MenuIcon />
-        </IconButton>
+    <AppBar style={{ background: '#ffffff' }} className={classes.abNavbarRoot} sx={{ boxShadow: 0 }}>
+      <Toolbar className={classes.abLogo}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          My App
+          <img src={Logo} alt="logo" />
         </Typography>
         {loggedInUser && (
           <>
+            <Button style={{ color: '#000000' }}>Jobs</Button>
+            <Button style={{ color: '#000000', width: '20' }}>Message</Button>
+            <img src={greenDot} alt="green dot" />
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -52,7 +58,7 @@ const Navbar: React.FC = () => {
               onClick={handleMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <AvatarDisplay loggedIn user={loggedInUser} />
             </IconButton>
             <Menu
               id="menu-appbar"
