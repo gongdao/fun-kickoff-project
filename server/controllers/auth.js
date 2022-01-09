@@ -111,6 +111,11 @@ exports.loadUser = asyncHandler(async (req, res, next) => {
 // @access Public
 exports.logoutUser = asyncHandler(async (req, res, next) => {
   res.clearCookie("token");
-
+  
   res.send("You have successfully logged out");
+  // res.status(200).json({
+  //   success: "You have successfully logged out"
+  // });
 });
+
+

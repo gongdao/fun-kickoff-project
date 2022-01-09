@@ -1,21 +1,18 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const app = require("../app.js");
+const app = require("../app");
 
 chai.should();
 chai.use(chaiHttp);
 
-describe("/POST ping", () => {
-  it("it should return 200 and message", (done) => {
+describe("/POST logout", () => {
+  it("it should return a message", (done) => {
     chai
-      .request(app)
-      .post(`/ping/`)
-      .send({ message: "hello" })
+      .request.agent('http://localhost:3001')
+      .post(`/auth/logout`)
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have
-          .property("response")
-          .eql("Server is running. Message received: hello");
+        res.text.should.have
+          .eql("You have successfully logged out");
         done();
       });
   });
