@@ -51,9 +51,7 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
             label={<Typography className={classes.label}>E-mail address</Typography>}
             fullWidth
             margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
+            InputLabelProps={{}}
             InputProps={{
               classes: { input: classes.inputs },
             }}
@@ -70,9 +68,7 @@ export default function Login({ handleSubmit }: Props): JSX.Element {
             label={<Typography className={classes.label}>Password</Typography>}
             fullWidth
             margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
+            InputLabelProps={{}}
             InputProps={{
               classes: { input: classes.inputs },
               endAdornment: <Typography className={classes.forgot}>Forgot?</Typography>,

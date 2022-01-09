@@ -2,15 +2,17 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../context/useAuthContext';
 import { useSocket } from '../../context/useSocketContext';
 import { useHistory } from 'react-router-dom';
-import { CircularProgress, Typography, Grid } from '@mui/material';
+import { CircularProgress, Typography, Grid, Box, Avatar, Button } from '@mui/material';
 import { Navbar } from '../../components/Navbar/Navbar';
-import { RandomFactCard } from '../../components/FactCard/RandomFactCard';
-import { facts } from '../../mocks/mockFacts';
+import VerticalMenu from '../../components/VerticalMenu/VerticalMenu';
+import useStyles from './useStyles';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Dashboard(): JSX.Element {
   const { loggedInUser } = useAuth();
   const { initSocket } = useSocket();
   const history = useHistory();
+  const classes = useStyles();
 
   useEffect(() => {
     initSocket();
@@ -26,18 +28,44 @@ export default function Dashboard(): JSX.Element {
   return (
     <>
       <Navbar />
-      <Grid sx={{ padding: 5 }} container rowSpacing={5} columnSpacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h4" component="h1">
-            Welcome to random facts!
-          </Typography>
-        </Grid>
-        {facts.map(({ id, fact, coverUrl: cover }) => (
-          <Grid item key={id} xs={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <RandomFactCard fact={fact} cover={cover} />
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+        <div className={classes.abTop}>
+          <VerticalMenu loggedInUser={loggedInUser} />
+        </div>
+        <div style={{ marginTop: 160 }}>
+          <Grid item display="flex" flexDirection="row">
+            <Grid item display="flex" flexDirection="column" alignItems="center">
+              <Typography variant="h1">Profile Photo</Typography>
+              <br></br>
+              <Avatar
+                alt="user photo"
+                src={`https://robohash.org/${loggedInUser.email}.png`}
+                sx={{ width: 86, height: 86 }}
+              />
+              <br></br>
+              <br></br>
+              <Typography className={classes.abText} variant="body1">
+                Be sure to use photo that clearly show your face
+              </Typography>
+              <br></br>
+              <br></br>
+              <div style={{ marginTop: '330' }}>
+                <Button
+                  type="submit"
+                  size="large"
+                  style={{ color: '#ff0000', border: 'solid red 1px', width: '320', height: '56' }}
+                >
+                  {'Upload a file from your device'}
+                </Button>
+              </div>
+              <Grid item display="flex" flexDirection="row" style={{ marginTop: 26 }}>
+                <DeleteIcon />
+                <Typography variant="body1">Delete photo</Typography>
+              </Grid>
+            </Grid>
           </Grid>
-        ))}
-      </Grid>
+        </div>
+      </Box>
     </>
   );
 }

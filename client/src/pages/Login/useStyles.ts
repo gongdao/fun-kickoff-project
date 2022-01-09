@@ -12,8 +12,10 @@ const useStyles = makeStyles(() => ({
     paddingTop: 23,
   },
   welcome: {
-    fontSize: 26,
-    paddingBottom: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 50,
     color: '#000000',
     fontWeight: 700,
   },
