@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Profile = mongoose.model('Profile');
-const User = mongoose.model('User');
 
+// CREATE
 exports.createProfile = function (req, res, next) {
   var profile = new Profile(req.body);
 
@@ -16,7 +16,7 @@ exports.createProfile = function (req, res, next) {
     }
   });
 };
-
+//UPDATE
 exports.updateProfile = function (req, res, next) {
   Profile.findByIdAndUpdate(req.profile._id, req.body, { new: true }, function (err, profile) {
     if (err) {
@@ -25,7 +25,7 @@ exports.updateProfile = function (req, res, next) {
     res.json(profile);
   });
 };
-
+//GET
 exports.read = function (req, res) {
   res.json(req.profile);
 }
@@ -48,7 +48,7 @@ exports.profileById = function (req, res, next, profileId) {
     }
   })
 }
-
+//GET all
 exports.listProfile = function (req, res, next) {
   let user = req.querey.user;
   Profile.find({}, function (err, profileList) {

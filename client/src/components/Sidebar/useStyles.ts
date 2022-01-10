@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   chatSideBanner: {
     height: '100vh',
     padding: '1rem 1rem',
-    marginLeft: 100,
+    marginLeft: 300,
     width: drawerWidth,
     [theme.breakpoints.up('md')]: {
       padding: '2rem 2rem',
@@ -19,6 +19,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginLeft: 100,
     fontWeight: 400,
     fontSize: 14,
+  },
+  button: {
+    backgroundColor: '#fff',
+    color: '#777',
+    '&:hover': {
+      backgroundColor: '#fff',
+      color: '#3c52b2',
+    },
+    '&:active': {
+      boxShadow: 'none',
+      color: '#000000',
+    },
   },
   abSelected: {
     color: '#111',

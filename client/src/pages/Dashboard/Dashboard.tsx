@@ -4,9 +4,9 @@ import { useSocket } from '../../context/useSocketContext';
 import { useHistory } from 'react-router-dom';
 import { CircularProgress, Typography, Grid, Box, Avatar, Button } from '@mui/material';
 import { Navbar } from '../../components/Navbar/Navbar';
-import VerticalMenu from '../../components/VerticalMenu/VerticalMenu';
 import useStyles from './useStyles';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Sidebar from '../../components/Sidemenu/Sidebar';
 
 export default function Dashboard(): JSX.Element {
   const { loggedInUser } = useAuth();
@@ -30,7 +30,7 @@ export default function Dashboard(): JSX.Element {
       <Navbar />
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
         <div className={classes.abTop}>
-          <VerticalMenu loggedInUser={loggedInUser} />
+          <Sidebar loggedInUser={loggedInUser} />
         </div>
         <div style={{ marginTop: 160 }}>
           <Grid item display="flex" flexDirection="row">

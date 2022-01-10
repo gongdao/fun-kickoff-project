@@ -1,10 +1,8 @@
 import { makeStyles } from '@mui/styles';
-import { Theme } from '@mui/material/styles';
-import { theme } from '../../themes/theme';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   abRoot: {
-    marginTop: 200,
+    marginTop: 220,
   },
   abItem: {
     color: '#111',
