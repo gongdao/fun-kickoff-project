@@ -30,7 +30,7 @@ export default function Availability(): JSX.Element {
       <Navbar />
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
         <div className={classes.abTop}>
-          <Sidebar loggedInUser={loggedInUser} />
+          <Sidebar loggedInUser={loggedInUser} active="Availability" />
         </div>
         <div style={{ marginTop: 130, marginLeft: '-150px' }}>
           <img src={Available} alt="availability" />

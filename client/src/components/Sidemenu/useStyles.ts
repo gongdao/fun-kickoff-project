@@ -1,11 +1,10 @@
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
-  drawer: {
-    backgroundColor: '#ffffff',
-  },
   abItem: {
-    color: '#111',
+    color: '#000',
+    fontWeight: 'bolder',
+    cursor: 'pointer',
   },
   abSidebar: {
     width: 150,

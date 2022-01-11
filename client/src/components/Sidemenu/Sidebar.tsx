@@ -7,11 +7,19 @@ import { User } from '../../interface/User';
 
 interface Props {
   loggedInUser: User;
-  handleDrawerToggle?: () => void;
+  active: string;
 }
-const Sidebar = ({ loggedInUser }: Props): JSX.Element => {
+const Sidebar = ({ loggedInUser, active }: Props): JSX.Element => {
   const classes = useStyles();
   const history = useHistory();
+  const menuItems = [
+    { id: 1, name: 'Profile', to: 'dashboard' },
+    { id: 2, name: 'Edit profile', to: 'editProfile' },
+    { id: 3, name: 'Availability', to: 'availability' },
+    { id: 4, name: 'Payment', to: 'payment' },
+    { id: 5, name: 'Security', to: 'security' },
+    { id: 6, name: 'Settings', to: 'settings' },
+  ];
 
   if (loggedInUser === undefined) return <CircularProgress />;
   if (!loggedInUser) {
@@ -19,40 +27,34 @@ const Sidebar = ({ loggedInUser }: Props): JSX.Element => {
     // loading for a split seconds until history.push works
     return <CircularProgress />;
   }
+
+  const createMenu = () => {
+    const menu = [];
+    for (let i = 0; i < menuItems.length; i++) {
+      if (active === menuItems[i].name) {
+        menu.push(
+          <ListItem className={classes.abItem}>
+            <Link style={{ textDecoration: 'none', color: '#555' }} to={`/${menuItems[i].to}`}>
+              {menuItems[i].name}
+            </Link>
+          </ListItem>,
+        );
+      } else {
+        menu.push(
+          <ListItem className={classes.listItem}>
+            <Link style={{ textDecoration: 'none', color: '#555' }} to={`/${menuItems[i].to}`}>
+              {menuItems[i].name}
+            </Link>
+          </ListItem>,
+        );
+      }
+    }
+    return menu;
+  };
+
   return (
     <div className={classes.abSidebar}>
-      <List>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/dashboard">
-            Profile
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/dashboard">
-            Edit profile
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/availability">
-            Availability
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/payment">
-            Payment
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/login">
-            Security
-          </Link>
-        </ListItem>
-        <ListItem className={classes.listItem}>
-          <Link style={{ textDecoration: 'none', color: '#555' }} to="/login">
-            Settings
-          </Link>
-        </ListItem>
-      </List>
+      <List>{createMenu()}</List>
     </div>
   );
 };

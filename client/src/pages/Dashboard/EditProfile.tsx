@@ -8,7 +8,7 @@ import useStyles from './useStyles';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Sidebar from '../../components/Sidemenu/Sidebar';
 
-export default function Dashboard(): JSX.Element {
+export default function EditProfile(): JSX.Element {
   const { loggedInUser } = useAuth();
   const { initSocket } = useSocket();
   const history = useHistory();
@@ -30,7 +30,7 @@ export default function Dashboard(): JSX.Element {
       <Navbar />
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
         <div className={classes.abTop}>
-          <Sidebar loggedInUser={loggedInUser} active="Profile" />
+          <Sidebar loggedInUser={loggedInUser} active="Edit profile" />
         </div>
         <div style={{ marginTop: 160 }}>
           <Grid item display="flex" flexDirection="row">
